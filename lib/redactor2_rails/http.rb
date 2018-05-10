@@ -77,8 +77,10 @@ module Redactor2Rails
     # file upload hash with UploadedFile objects
     def self.normalize_param(*args)
       value = args.first
-      if Hash === value && value.has_key?(:tempfile)
+      if Hash == value && value.has_key?(:tempfile)
         UploadedFile.new(value)
+      elsif value.is_a?(Array)
+        value.first
       elsif value.is_a?(String)
         QqFile.new(*args)
       else

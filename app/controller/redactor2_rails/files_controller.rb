@@ -12,7 +12,7 @@ class Redactor2Rails::FilesController < ApplicationController
     end
 
     if @file.save
-      render json: { url: @file.url, name: @file.filename }
+      render json: { file: { url: @file.url, name: @file.filename } }
     else
       render json: { error: @file.errors }
     end
