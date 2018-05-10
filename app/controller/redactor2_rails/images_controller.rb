@@ -12,7 +12,7 @@ class Redactor2Rails::ImagesController < ApplicationController
     end
 
     if @image.save
-      render json: { id: @image.id, url: @image.url(:content) }
+      render json: { file: { id: @image.id, url: @image.url(:content) } }
     else
       render json: { error: @image.errors }
     end
